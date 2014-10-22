@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class Aoe_Eav_Model_Observer
  *

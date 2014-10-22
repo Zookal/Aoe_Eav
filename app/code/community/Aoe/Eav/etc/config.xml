@@ -20,7 +20,6 @@
             <eav_entity_attribute_set_save_after>
                 <observers>
                     <aoe_eav>
-                        <type>singleton</type>
                         <class>aoe_eav/observer</class>
                         <method>cleanEavCache</method>
                     </aoe_eav>
@@ -29,7 +28,6 @@
             <eav_entity_attribute_set_delete_after>
                 <observers>
                     <aoe_eav>
-                        <type>singleton</type>
                         <class>aoe_eav/observer</class>
                         <method>cleanEavCache</method>
                     </aoe_eav>

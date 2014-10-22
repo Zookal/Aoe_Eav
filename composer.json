@@ -1,0 +1,16 @@
+{
+    "name": "aoepeople/eavcache",
+    "type": "magento-module",
+    "license": "OSL-3.0",
+    "homepage": "https://github.com/AOEpeople/Aoe_Eav",
+    "description": "Enables the EAV cache in Magento",
+    "authors": [
+        {
+            "name": "Dmitriy Zavalkin",
+            "email": "dmitriy.zavalkin@gmail.com"
+        }
+    ],
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

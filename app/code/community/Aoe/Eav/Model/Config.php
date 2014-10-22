@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class Aoe_Eav_Model_Config
  *
@@ -53,6 +54,7 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
      * Load data from cache
      *
      * @param string $cacheId
+     *
      * @return bool|string
      */
     protected function _loadDataFromCache($cacheId)
@@ -98,7 +100,7 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
             return $this;
         }
 
-        $this->_entityTypes = array();
+        $this->_entityTypes   = array();
         $entityTypeCollection = Mage::getResourceModel('eav/entity_type_collection');
         if ($entityTypeCollection->count() > 0) {
             /** @var $entityType Mage_Eav_Model_Entity_Type */
@@ -127,7 +129,7 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
         }
         Varien_Profiler::start('EAV: ' . __METHOD__);
 
-        $this->_attributeSets = array();
+        $this->_attributeSets   = array();
         $attributeSetCollection = Mage::getResourceModel('eav/entity_attribute_set_collection');
         if ($attributeSetCollection->count() > 0) {
             /** @var $attributeSet Mage_Eav_Model_Entity_Attribute_Set */
@@ -150,7 +152,7 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
         if (is_array($this->_attributes)) {
             return $this;
         }
-        Varien_Profiler::start('EAV: '.__METHOD__);
+        Varien_Profiler::start('EAV: ' . __METHOD__);
 
         $this->_initEntityTypes();
 
@@ -192,11 +194,12 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
      * Initialize all attributes for given entity type
      *
      * @param  Mage_Eav_Model_Entity_Type $entityType
+     *
      * @return $this
      */
     protected function _initAttributes($entityType)
     {
-        Varien_Profiler::start('EAV: '.__METHOD__);
+        Varien_Profiler::start('EAV: ' . __METHOD__);
 
         /** @var Mage_Eav_Model_Resource_Entity_Attribute_Collection $attributesCollection */
         $attributesCollection = Mage::getResourceModel($entityType->getEntityAttributeCollection());
@@ -232,7 +235,7 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
             }
         }
 
-        Varien_Profiler::stop('EAV: '.__METHOD__);
+        Varien_Profiler::stop('EAV: ' . __METHOD__);
         return $this;
     }
 
@@ -240,7 +243,7 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
      * Init attribute from attribute data array
      *
      * @param Mage_Eav_Model_Entity_Type $entityType
-     * @param array $attributeData
+     * @param array                      $attributeData
      */
     protected function _initAttribute($entityType, $attributeData)
     {
@@ -267,6 +270,7 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
      * Get entity type object by entity type code/identifier
      *
      * @param  Mage_Eav_Model_Entity_Type|string|int $code
+     *
      * @return Mage_Eav_Model_Entity_Type
      */
     public function getEntityType($code)
@@ -296,8 +300,9 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
     /**
      * Get attribute by code for entity type
      *
-     * @param   Mage_Eav_Model_Entity_Type|string|int $entityType
+     * @param   Mage_Eav_Model_Entity_Type|string|int               $entityType
      * @param   Mage_Eav_Model_Entity_Attribute_Abstract|string|int $code
+     *
      * @return  Mage_Eav_Model_Entity_Attribute_Abstract|false
      */
     public function getAttribute($entityType, $code)
@@ -306,7 +311,7 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
             return $code;
         }
 
-        Varien_Profiler::start('EAV: '.__METHOD__);
+        Varien_Profiler::start('EAV: ' . __METHOD__);
         $this->_initAllAttributes();
 
         $entityType     = $this->getEntityType($entityType);
@@ -340,8 +345,10 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
      * Get attribute object for collection usage
      *
      * @deprecated use getAttribute() instead
-     * @param   Mage_Eav_Model_Entity_Type|string|int $entityType
+     *
+     * @param   Mage_Eav_Model_Entity_Type|string|int               $entityType
      * @param   Mage_Eav_Model_Entity_Attribute_Abstract|string|int $attribute
+     *
      * @return  Mage_Eav_Model_Entity_Attribute_Abstract|false
      */
     public function getCollectionAttribute($entityType, $attribute)
@@ -353,7 +360,8 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
      * Get codes of all entity type attributes
      *
      * @param  Mage_Eav_Model_Entity_Type|string|int $entityType
-     * @param  Varien_Object $object
+     * @param  Varien_Object                         $object
+     *
      * @return array
      */
     public function getEntityAttributeCodes($entityType, $object = null)
@@ -398,8 +406,10 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
      * Import attributes data from external source
      *
      * @deprecated
+     *
      * @param string|Mage_Eav_Model_Entity_Type $entityType
-     * @param array $attributes
+     * @param array                             $attributes
+     *
      * @return $this
      */
     public function importAttributesData($entityType, array $attributes)
@@ -413,8 +423,10 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
      * Prepare attributes for usage in EAV collection
      *
      * @deprecated
+     *
      * @param   mixed $entityType
      * @param   array $attributes
+     *
      * @return  $this
      */
     public function loadCollectionAttributes($entityType, $attributes)
@@ -428,8 +440,10 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
      * Preload entity type attributes for performance optimization
      *
      * @deprecated
+     *
      * @param   mixed $entityType
      * @param   mixed $attributes
+     *
      * @return  Mage_Eav_Model_Config
      */
     public function preloadAttributes($entityType, $attributes)
