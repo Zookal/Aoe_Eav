@@ -257,9 +257,9 @@ class Aoe_Eav_Model_Config extends Mage_Eav_Model_Config
         $attributeCode = $attributeData['attribute_code'];
         $attribute     = Mage::getModel($model)->setData($attributeData);
         $entity        = $entityType->getEntity();
-        if ($entity && in_array($attributeCode, $entity->getDefaultAttributes())) {
-            $attribute->setBackendType(Mage_Eav_Model_Entity_Attribute_Abstract::TYPE_STATIC)
-                ->setIsGlobal(1);
+        $isFlatTableEntity = !method_exists($entity, 'getDefaultAttributes');
+        if ($entity && ($isFlatTableEntity || in_array($attributeCode, $entity->getDefaultAttributes()))) {
+            $attribute->setBackendType(Mage_Eav_Model_Entity_Attribute_Abstract::TYPE_STATIC)->setIsGlobal(1);
         }
 
         $this->_attributes[$entityTypeCode][$attributeCode] = $attribute;
